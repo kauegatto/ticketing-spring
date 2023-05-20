@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 @RestController
-@RequestMapping("/tickets")
+@RequestMapping("/ticket")
 public class TicketController {
     @Autowired
     public TicketController(TicketRepository repo) {
@@ -24,8 +24,9 @@ public class TicketController {
 
     @GetMapping("")
     public String HelloWorld (){
-        log.info("inserting tickets " + this.repo.save(Ticket.builder().id(UUID.randomUUID()).build()));
-        return "Hello, world";
+        /*log.info("inserting tickets " + this.repo.save(Ticket.builder().id(UUID.randomUUID()).build()));
+        return "Hello, world";*/
+        throw new RuntimeException();
     }
     @PostMapping("")
     public ResponseEntity<Ticket> Create(){
