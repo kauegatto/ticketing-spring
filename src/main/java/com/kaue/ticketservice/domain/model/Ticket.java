@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.OffsetDateTime;
@@ -31,6 +32,7 @@ public class Ticket {
     @Schema(description = "Ticket description")
     private String description;
     //private TicketStatus status;
+    @CreationTimestamp
     @Schema(description = "Create date")
     private OffsetDateTime createDate;
     @Schema(description = "Resolution date")
