@@ -3,9 +3,11 @@ package com.kaue.ticketservice.domain.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
-import org.hibernate.annotations.UuidGenerator;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -17,7 +19,7 @@ import java.util.UUID;
 @Builder
 public class Ticket {
     @Schema(description = "Unique UUID Identifier")
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     private UUID id;
     @Schema(description = "User email")
@@ -30,9 +32,8 @@ public class Ticket {
     private String description;
     //private TicketStatus status;
     @Schema(description = "Create date")
+    @CreatedDate
     private OffsetDateTime createDate;
-    @Schema(description = "Create date")
-    private OffsetDateTime updateDate;
     @Schema(description = "Resolution date")
     private OffsetDateTime resolutionDate;
 }
