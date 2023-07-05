@@ -1,6 +1,6 @@
 package com.kaue.ticketservice.application.controller.advice;
 
-import com.kaue.ticketservice.application.controller.TicketController;
+import com.kaue.ticketservice.application.controller.TicketControllerImpl;
 import com.kaue.ticketservice.domain.exceptions.InvalidTicketBodyException;
 import com.kaue.ticketservice.domain.exceptions.TicketNotFoundException;
 import org.springframework.core.Ordered;
@@ -10,7 +10,7 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-@RestControllerAdvice(assignableTypes = TicketController.class)
+@RestControllerAdvice(assignableTypes = TicketControllerImpl.class)
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class TicketControllerAdvice {
     @ExceptionHandler(InvalidTicketBodyException.class)
