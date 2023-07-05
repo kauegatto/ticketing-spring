@@ -4,7 +4,9 @@ package com.kaue.ticketservice.domain.model;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -14,6 +16,8 @@ import java.util.UUID;
 @Builder
 @Entity /*Annotating this with entity on Domain Class?*/
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Ticket {
     @Schema(description = "Unique UUID Identifier")
     @UuidGenerator
@@ -34,19 +38,5 @@ public class Ticket {
     private OffsetDateTime updateDate;
     @Schema(description = "Resolution date")
     private OffsetDateTime resolutionDate;
-
-    public Ticket() {
-    }
-
-    public Ticket(UUID id, String requesterEmail, Long assigneeEmail, String title, String description, OffsetDateTime createDate, OffsetDateTime updateDate, OffsetDateTime resolutionDate) {
-        this.id = id;
-        this.requesterEmail = requesterEmail;
-        this.assigneeEmail = assigneeEmail;
-        this.title = title;
-        this.description = description;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-        this.resolutionDate = resolutionDate;
-    }
 }
 
