@@ -6,14 +6,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.ToString;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
+
 @Builder
-@Entity
+@Entity /*Annotating this with entity on Domain Class?*/
 @ToString
 public class Ticket {
     @Schema(description = "Unique UUID Identifier")
+    @UuidGenerator
     @Id
     private UUID id;
     @Schema(description = "User email")
@@ -46,3 +49,4 @@ public class Ticket {
         this.resolutionDate = resolutionDate;
     }
 }
+
