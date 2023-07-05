@@ -2,6 +2,9 @@ package com.kaue.ticketservice.application.controller.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.OffsetDateTime;
 
 @AllArgsConstructor
 @Setter
@@ -11,4 +14,6 @@ public class TicketCreationDTO {
     private String title;
     @Schema(description = "Ticket description")
     private String description;
+    private String requesterEmail;
+
 }

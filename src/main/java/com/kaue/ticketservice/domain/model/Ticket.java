@@ -32,7 +32,6 @@ public class Ticket {
     private String description;
     //private TicketStatus status;
     @Schema(description = "Create date")
-    @CreatedDate
     private OffsetDateTime createDate;
     @Schema(description = "Resolution date")
     private OffsetDateTime resolutionDate;

@@ -18,4 +18,6 @@ public class TicketResponseDTO {
     private String title;
     @Schema(description = "Ticket description")
     private String description;
+    private OffsetDateTime createDate;
+    private String requesterEmail;
 }
