@@ -4,20 +4,17 @@ package com.kaue.ticketservice.domain.model;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
-@Builder
 @Entity /*Annotating this with entity on Domain Class?*/
-@ToString
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Ticket {
     @Schema(description = "Unique UUID Identifier")
     @UuidGenerator
