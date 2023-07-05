@@ -15,4 +15,5 @@
 - [ ] Create User
 - [ ] Dispatch Spring Event when a ticket Status is Changed
 - [ ] Register Listener for ticket status change to email the requester
-
+- [ ] Create SLA's associated with each status
+  - [ ] Cache it
