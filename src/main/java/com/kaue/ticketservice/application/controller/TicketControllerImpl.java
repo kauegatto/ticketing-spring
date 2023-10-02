@@ -7,6 +7,7 @@ import com.kaue.ticketservice.domain.exceptions.TicketNotFoundException;
 import com.kaue.ticketservice.domain.model.Ticket;
 import com.kaue.ticketservice.infrastructure.mappers.TicketMapper;
 import com.kaue.ticketservice.infrastructure.repository.TicketRepository;
+import com.kaue.ticketservice.infrastructure.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,7 @@ public class TicketControllerImpl implements TicketController {
     private static final Logger log = LoggerFactory.getLogger(TicketControllerImpl.class);
     TicketRepository repo;
     TicketMapper ticketMapper;
+    UserRepository userRepo;
 
     @GetMapping("")
     public ResponseEntity<List<TicketResponseDTO>> FetchAll() {
