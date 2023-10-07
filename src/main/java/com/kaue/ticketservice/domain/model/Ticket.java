@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -29,9 +30,9 @@ public class Ticket {
     private String description;
     @CreatedDate
     @Schema(description = "Create date")
-    private OffsetDateTime createDate;
+    private Instant createDate;
     @Getter @Setter @LastModifiedDate
-    private OffsetDateTime  updatedDate;
+    private Instant  updatedDate;
     @Schema(description = "Resolution date")
     private OffsetDateTime resolutionDate;
 }

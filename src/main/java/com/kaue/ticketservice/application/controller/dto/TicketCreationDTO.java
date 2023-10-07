@@ -15,5 +15,4 @@ public class TicketCreationDTO {
     @Schema(description = "Ticket description")
     private String description;
     private String requesterEmail;
-
 }
