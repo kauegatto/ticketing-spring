@@ -1,12 +1,12 @@
 package com.kaue.ticketservice.domain.model;
 
-import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Entity
+@Document
 public class User {
   public User(String name, String lastName, Date bornAt) {
     this.name = name;

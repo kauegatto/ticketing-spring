@@ -1,26 +1,22 @@
 package com.kaue.ticketservice.domain.model;
-
-
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
-@Entity /*Annotating this with entity on Domain Class?*/
+@Document /* Refactor later - Annotating this with entity on Domain Class?*/
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class Ticket {
     @Schema(description = "Unique UUID Identifier")
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     private UUID id;
     @Schema(description = "User email")
@@ -31,10 +27,11 @@ public class Ticket {
     private String title;
     @Schema(description = "Ticket description")
     private String description;
-    //private TicketStatus status;
-    @CreationTimestamp
+    @CreatedDate
     @Schema(description = "Create date")
     private OffsetDateTime createDate;
+    @Getter @Setter @LastModifiedDate
+    private OffsetDateTime  updatedDate;
     @Schema(description = "Resolution date")
     private OffsetDateTime resolutionDate;
 }
