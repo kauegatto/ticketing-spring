@@ -6,7 +6,7 @@
    -  [X] Document Tickets
  - [X]  Setup database
  - [X] Remove ResponseEntity of object
- - [ ] Use MongoDB
+ - [X] Use MongoDB
  - [ ] Refactor Project Structure
    - [ ] Create Services
    - [ ] Create Rich Domain Classes
