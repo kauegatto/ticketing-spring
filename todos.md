@@ -7,10 +7,12 @@
  - [X]  Setup database
  - [X] Remove ResponseEntity of object
  - [X] Use MongoDB
- - [ ] Refactor Project Structure
-   - [ ] Create Services
-   - [ ] Create Rich Domain Classes
-   - [ ] Create Appropriate Mappers (Ports and Adapters)
+ - [X] Refactor Project Structure
+   - [X] Create Services
+   - [+-] Create Rich Domain Classes
+   - [+-] Create Appropriate Mappers (Ports and Adapters)
+- [ ] Figure out how to map the id correctly without sacifying a POJO  with Spring Data MongoDB
+- [ ] Dockerize Java+Spring and make it start the whole app in compose
 - [ ] Create TicketStatus
   - [ ] Implement state machine 
 - [ ] Create User
