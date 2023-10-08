@@ -21,7 +21,7 @@ public interface TicketController {
     @Operation(summary = "Get all tickets", description = "This can only be done by an authorized user.")
     public ResponseEntity<List<TicketResponseDTO>> FetchAll();
     @Operation(summary = "Get a ticket given it's UUID", description = "This can only be done either by an administrator or the requester.")
-    public ResponseEntity<Object> GetById(@PathVariable UUID id)
+    public ResponseEntity<Object> GetById(@PathVariable String id)
             throws TicketNotFoundException;
     public ResponseEntity<TicketResponseDTO> Create(@RequestBody TicketCreationDTO ticket);
     public ResponseEntity<Iterable<Ticket>> getExceptionTest() throws InvalidTicketBodyException;

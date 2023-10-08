@@ -2,6 +2,7 @@ package com.kaue.ticketservice.application.controller.dto;
 
 import lombok.*;
 
+import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -9,9 +10,9 @@ import java.util.UUID;
 @Setter
 @Getter
 public class TicketResponseDTO {
-    private UUID id;
     private String title;
     private String description;
-    private OffsetDateTime createDate;
+    private Instant createDate;
+    private Instant lastModified;
     private String requesterEmail;
 }

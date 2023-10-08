@@ -37,7 +37,7 @@ public class TicketControllerImpl implements TicketController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> GetById(UUID id) {
+    public ResponseEntity<Object> GetById(String id) {
         return ResponseEntity.ok(repo.findById(id).orElseThrow(() -> new TicketNotFoundException("Ticket not found with id: " + id)));
     }
 

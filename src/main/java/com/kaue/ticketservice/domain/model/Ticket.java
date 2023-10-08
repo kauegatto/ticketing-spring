@@ -3,13 +3,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Instant;
 import java.time.OffsetDateTime;
-import java.util.UUID;
+
 
 @Document /* Refactor later - Annotating this with entity on Domain Class?*/
 @Data
@@ -17,9 +16,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 public class Ticket {
-    @Schema(description = "Unique UUID Identifier")
-    @Id
-    private UUID id;
     @Schema(description = "User email")
     private String requesterEmail;
     @Schema(description = "Assignee / Agent email")
