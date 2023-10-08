@@ -16,9 +16,9 @@ import java.util.List;
 @SecurityRequirement(name = "bearer")
 public interface TicketController {
     @Operation(summary = "Get all tickets", description = "This can only be done by an authorized user.")
-    public ResponseEntity<List<TicketResponseDTO>> getAll();
+    ResponseEntity<List<TicketResponseDTO>> getAll();
     @Operation(summary = "Get a ticket given it's UUID", description = "This can only be done either by an administrator or the requester.")
-    public ResponseEntity<TicketResponseDTO> getById(@PathVariable String id)
+    ResponseEntity<TicketResponseDTO> getById(@PathVariable String id)
             throws TicketNotFoundException;
-    public ResponseEntity<TicketResponseDTO> create(@RequestBody TicketCreationDTO ticket);
+    ResponseEntity<TicketResponseDTO> create(@RequestBody TicketCreationDTO ticket);
 }
