@@ -1,10 +1,14 @@
-db.getSiblingDB('ticketing-service').tickets.insertMany([
+db.getSiblingDB('ticketing-service').ticket.insertMany([
   {
     "requesterEmail":"example@mail1.com",
     "assigneeEmail":"example@agent.com",
     "title":"Pls help me",
     "description":"How do i open a support request",
-    "createDate":"2016-05-18T16:00:00Z",
-    "resolutionDate":"2016-05-19T16:00:00Z",
+    "createDate": {
+           "$date": "2023-10-08T22:19:31.605Z"
+   },
+    "createDate": {
+           "$date": "2023-10-08T22:19:31.605Z"
+    },
   }
 ]);
