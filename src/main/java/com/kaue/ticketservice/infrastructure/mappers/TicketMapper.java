@@ -1,7 +1,7 @@
 package com.kaue.ticketservice.infrastructure.mappers;
 
-import com.kaue.ticketservice.application.controller.dto.TicketCreationDTO;
-import com.kaue.ticketservice.application.controller.dto.TicketResponseDTO;
+import com.kaue.ticketservice.application.dto.TicketCreationDTO;
+import com.kaue.ticketservice.application.dto.TicketResponseDTO;
 import com.kaue.ticketservice.domain.model.Ticket;
 
 import org.mapstruct.Mapper;

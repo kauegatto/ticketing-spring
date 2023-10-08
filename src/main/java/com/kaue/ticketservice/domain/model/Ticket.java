@@ -9,12 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 
-
-@Document /* Refactor later - Annotating this with entity on Domain Class?*/
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class Ticket {
     @Schema(description = "User email")
     private String requesterEmail;
@@ -31,5 +25,12 @@ public class Ticket {
     private Instant  updatedDate;
     @Schema(description = "Resolution date")
     private OffsetDateTime resolutionDate;
+
+    public Ticket(String requesterEmail, String title, String description, Instant createDate) {
+        this.requesterEmail = requesterEmail;
+        this.title = title;
+        this.description = description;
+        this.createDate = createDate;
+    }
 }
 
