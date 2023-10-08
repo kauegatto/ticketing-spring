@@ -14,7 +14,7 @@ public class TicketService {
     this.repository = repository;
   }
   public List<Ticket> findAll(){
-    return List.of(new Ticket("email", "title", "description", Instant.now()));
+    return repository.findAll();
   }
   public Ticket findById(String Id){
     return repository.findById(Id).orElseThrow(
@@ -22,7 +22,6 @@ public class TicketService {
     );
   }
   public Ticket save(Ticket ticket){
-    repository.save(ticket);
-    return ticket;
+    return repository.save(ticket);
   }
 }
