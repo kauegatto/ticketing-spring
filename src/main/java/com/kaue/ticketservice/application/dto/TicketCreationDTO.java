@@ -4,9 +4,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 
+@Data
 @AllArgsConstructor
-@Setter
-@Getter
+@NoArgsConstructor
+@Builder
 public class TicketCreationDTO {
     @Schema(description = "Title of the ticket")
     private String title;

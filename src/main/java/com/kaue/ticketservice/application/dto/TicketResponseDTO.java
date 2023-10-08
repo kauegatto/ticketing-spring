@@ -4,13 +4,14 @@ import lombok.*;
 
 import java.time.Instant;
 
+@Data
 @AllArgsConstructor
-@Setter
-@Getter
+@NoArgsConstructor
+@Builder
 public class TicketResponseDTO {
+    private String id;
     private String title;
     private String description;
     private Instant createDate;
-    private Instant lastModified;
     private String requesterEmail;
 }
