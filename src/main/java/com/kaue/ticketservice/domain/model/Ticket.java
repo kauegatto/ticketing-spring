@@ -2,8 +2,8 @@ package com.kaue.ticketservice.domain.model;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.PersistenceCreator;
 
 import java.time.Instant;
 import java.time.OffsetDateTime;
@@ -36,6 +36,16 @@ public class Ticket {
         this.title = title;
         this.description = description;
         this.createDate = Instant.now();
+    }
+    @PersistenceCreator /* infrastucture code, we need to fix this.*/
+    private Ticket(String requesterEmail, String assigneeEmail, String title, String description, Instant createDate, Instant updatedDate, OffsetDateTime resolutionDate) {
+        this.requesterEmail = requesterEmail;
+        this.assigneeEmail = assigneeEmail;
+        this.title = title;
+        this.description = description;
+        this.createDate = createDate;
+        this.updatedDate = updatedDate;
+        this.resolutionDate = resolutionDate;
     }
 }
 
