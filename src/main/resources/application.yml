@@ -1,0 +1,12 @@
+spring:
+    data:
+        mongodb:
+            authentication-database: admin
+            database: ticketing-service
+            host: ${MONGO_HOST:test}
+            password: password
+            port: 27017
+            username: root
+springdoc:
+    swagger-ui:
+        path: /docs/swagger.html
