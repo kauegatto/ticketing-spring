@@ -42,7 +42,7 @@ public class TicketControllerImpl implements TicketController {
     public ResponseEntity<TicketResponseDTO> create(TicketCreationDTO ticket) {
         log.info("Received insert for ticket {}", ticket);
         var domainTicket = ticketMapper.ticketCreationDTOToTicket(ticket);
-        ticketService.save(domainTicket);
+        domainTicket = ticketService.save(domainTicket);
         var ticketResponse = ticketMapper.ticketToTicketResponseDTO(domainTicket);
         return ResponseEntity.ok(ticketResponse);
     }
