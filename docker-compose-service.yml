@@ -11,7 +11,9 @@ services:
       MONGO_INITDB_DATABASE: ticketing-service
     volumes:
       - ./scripts/docker:/docker-entrypoint-initdb.d
-    hostname: ticketing_mongodb
+    hostname: mongo
+    expose:
+      - 27017
     ports:
       - "27017:27017"
 
@@ -22,6 +24,6 @@ services:
     depends_on:
       - mongo
     environment:
-      - MONGO_HOST=ticketing_mongodb
+      - MONGO_HOST=mongo
     ports:
       - "8080:8080"
