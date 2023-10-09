@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DIConfiguration {
   @Autowired
-  private TicketRepository ticketRepository; // Inject the repository interface
+  private TicketRepository ticketRepository;
 
   @Bean
   public TicketService ticketService() {
