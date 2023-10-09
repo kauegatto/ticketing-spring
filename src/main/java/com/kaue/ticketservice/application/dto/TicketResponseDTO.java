@@ -1,16 +1,5 @@
 package com.kaue.ticketservice.application.dto;
 
-import lombok.*;
-
 import java.time.Instant;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class TicketResponseDTO {
-    private String title;
-    private String description;
-    private Instant createDate;
-    private String requesterEmail;
-}
+public record TicketResponseDTO (String title, String description, Instant createDate, String requesterEmail){}
