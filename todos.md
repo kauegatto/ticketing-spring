@@ -12,7 +12,7 @@
    - [+-] Create Rich Domain Classes
    - [+-] Create Appropriate Mappers (Ports and Adapters)
 - [ ] Figure out how to map the id correctly without sacifying a POJO  with Spring Data MongoDB
-- [ ] Dockerize Java+Spring and make it start the whole app in compose
+- [X] Dockerize Java+Spring and make it start the whole app in compose
 - [ ] Create TicketStatus
   - [ ] Implement state machine 
 - [ ] Create User
