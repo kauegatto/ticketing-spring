@@ -14,27 +14,28 @@ public class Ticket {
     @Getter
     final private String requesterEmail;
     @Schema(description = "Assignee / Agent email")
-    private Long assigneeEmail;
+    @Getter @Setter
+    private String assigneeEmail;
     @Schema(description = "Title of the ticket")
     @Getter
     final private String title;
     @Schema(description = "Ticket description")
-    @Getter
+    @Getter @Setter
     private String description;
-    @CreatedDate
     @Schema(description = "Create date")
     @Getter
     final private Instant createDate;
     @Getter @Setter @LastModifiedDate
     private Instant  updatedDate;
     @Schema(description = "Resolution date")
+    @Getter @Setter
     private OffsetDateTime resolutionDate;
 
-    public Ticket(String requesterEmail, String title, String description, Instant createDate) {
+    public Ticket(String requesterEmail, String title, String description) {
         this.requesterEmail = requesterEmail;
         this.title = title;
         this.description = description;
-        this.createDate = createDate;
+        this.createDate = Instant.now();
     }
 }
 
