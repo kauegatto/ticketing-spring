@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 public class TicketServiceApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(TicketServiceApplication.class, args); log.info("Started!");
+		SpringApplication.run(TicketServiceApplication.class, args);
 	}
 
 }
