@@ -11,7 +11,7 @@
    - [X] Create Services
    - [+-] Create Rich Domain Classes
    - [+-] Create Appropriate Mappers (Ports and Adapters)
-- [ ] Figure out how to map the id correctly without sacifying a POJO  with Spring Data MongoDB
+- [ ] Figure out how to map the id correctly without sacrificing a POJO  with Spring Data MongoDB
 - [X] Dockerize Java+Spring and make it start the whole app in compose
 - [ ] Create TicketStatus
   - [ ] Implement state machine 
