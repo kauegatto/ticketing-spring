@@ -18,6 +18,6 @@ public interface TicketMapper {
     @Mapping(target = "createDate", ignore = true)
     Ticket ticketCreationDTOToTicket(TicketCreationDTO ticketCreationDTO);
     TicketResponseDTO ticketToTicketResponseDTO(Ticket ticket);
-    List<TicketResponseDTO> TicketListToTicketResponseDTOList(List<Ticket> employees);
+    List<TicketResponseDTO> TicketListToTicketResponseDTOList(List<Ticket> tickets);
 }
 
