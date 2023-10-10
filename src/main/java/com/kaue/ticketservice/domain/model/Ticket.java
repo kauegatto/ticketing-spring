@@ -3,8 +3,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import lombok.*;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.annotation.PersistenceCreator;
-
 import java.time.Instant;
 import java.time.OffsetDateTime;
 
@@ -31,14 +29,7 @@ public class Ticket {
     @Getter @Setter
     private OffsetDateTime resolutionDate;
 
-    public Ticket(String requesterEmail, String title, String description) {
-        this.requesterEmail = requesterEmail;
-        this.title = title;
-        this.description = description;
-        this.createDate = Instant.now();
-    }
-    @PersistenceCreator /* infrastucture code, we need to fix this.*/
-    private Ticket(String requesterEmail, String assigneeEmail, String title, String description, Instant createDate, Instant updatedDate, OffsetDateTime resolutionDate) {
+    public Ticket(String requesterEmail, String assigneeEmail, String title, String description, Instant createDate, Instant updatedDate, OffsetDateTime resolutionDate) {
         this.requesterEmail = requesterEmail;
         this.assigneeEmail = assigneeEmail;
         this.title = title;
