@@ -4,6 +4,8 @@ This project doesn't aim to provide best practices of any regards and has educat
 Check Todos for a better "roadmap".
 
 ## Important: 
-Add `--add-opens=java.base/java.time=all-unnamed` to your vm options\n
-If you're on Windows, add it to `JAVA_TOOL_OPTIONS` env variable\n 
+Add `--add-opens=java.base/java.time=all-unnamed` to your vm options
+
+If you're on Windows, add it to `JAVA_TOOL_OPTIONS` env variable
+
 reason: https://github.com/spring-projects/spring-data-mongodb/issues/3893 ; https://stackoverflow.com/questions/70412805/what-does-this-error-mean-java-lang-reflect-inaccessibleobjectexception-unable
