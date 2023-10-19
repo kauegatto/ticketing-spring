@@ -7,6 +7,8 @@ spring:
             password: password
             port: 27017
             username: root
+    rabbitmq:
+        adresses: ${amqpURL:todo}
 springdoc:
     swagger-ui:
         path: /docs/swagger.html
