@@ -1,4 +1,4 @@
-package com.kaue.ticketservice.infrastructure.configuration;
+package com.kaue.emailservice.Infrastructure.configuration;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Queue;

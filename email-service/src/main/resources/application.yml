@@ -1,3 +1,6 @@
+spring:
+  rabbitmq:
+    addresses: ${amqpURL:todo}
 server:
   port: 8081
 broker:
