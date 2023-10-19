@@ -16,6 +16,12 @@ services:
       - 27017
     ports:
       - "27017:27017"
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: 'rabbitmq'
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
   spring:
     build:
@@ -23,6 +29,7 @@ services:
     container_name: "ticketing_spring"
     depends_on:
       - mongo
+      - rabbitmq
     environment:
       - MONGO_HOST=mongo
     ports:

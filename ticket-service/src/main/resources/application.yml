@@ -8,7 +8,7 @@ spring:
             port: 27017
             username: root
     rabbitmq:
-        addresses: ${amqpURL:todo}
+        addresses: ${amqpURL:amqp://guest:guest@localhost}
 broker:
     queue:
         ticket:

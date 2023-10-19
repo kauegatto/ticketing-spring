@@ -1,6 +1,6 @@
 spring:
   rabbitmq:
-    addresses: ${amqpURL:todo}
+    addresses: ${amqpURL:amqp://guest:guest@localhost}
 server:
   port: 8081
 broker:
