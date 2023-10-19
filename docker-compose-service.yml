@@ -19,7 +19,7 @@ services:
 
   spring:
     build:
-      dockerfile: Dockerfile
+      dockerfile: ticket-service/Dockerfile
     container_name: "ticketing_spring"
     depends_on:
       - mongo
