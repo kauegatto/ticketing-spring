@@ -3,6 +3,8 @@ package com.kaue.ticketservice.infrastructure.configuration;
 import com.kaue.ticketservice.domain.ports.TicketRepository;
 import com.kaue.ticketservice.domain.services.EventDispatcher;
 import com.kaue.ticketservice.domain.services.TicketService;
+import com.kaue.ticketservice.infrastructure.amqp.RabbitTicketDispatcher;
+import com.kaue.ticketservice.infrastructure.properties.TicketQueueProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +14,13 @@ public class DIConfiguration {
   @Autowired
   private TicketRepository ticketRepository;
   @Autowired
-  private EventDispatcher eventDispatcher;
+  private TicketQueueProperties ticketQueueProperties;
   @Bean
   public TicketService ticketService() {
-    return new TicketService(ticketRepository, eventDispatcher);
+    return new TicketService(ticketRepository, ticketsEventDispatcher());
+  }
+  @Bean
+  public EventDispatcher ticketsEventDispatcher(){
+    return new RabbitTicketDispatcher(ticketQueueProperties);
   }
 }
