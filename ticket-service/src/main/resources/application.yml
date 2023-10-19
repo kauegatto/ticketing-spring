@@ -9,6 +9,10 @@ spring:
             username: root
     rabbitmq:
         adresses: ${amqpURL:todo}
+broker:
+    queue:
+        ticket:
+            name: default.ticket
 springdoc:
     swagger-ui:
         path: /docs/swagger.html
