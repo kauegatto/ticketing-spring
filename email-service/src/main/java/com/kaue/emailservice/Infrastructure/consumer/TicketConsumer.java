@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TicketConsumer {
   @RabbitListener(queues = "${broker.queue.ticket.name}")
-  public void listenEmailQueue(@Payload TicketEventsEnum event){
-    log.info("Received: {}", event);
+  public void listenEmailQueue(@Payload String message){
+    log.info("Received: {}", message);
   }
 }
