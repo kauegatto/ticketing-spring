@@ -30,7 +30,7 @@ reason: https://github.com/spring-projects/spring-data-mongodb/issues/3893 ; htt
 - [X] Connect to rabbit
 - [X] Consume messages
 - [ ] Publish messages
-- [ ] Dockerize Rabbit [easy task!](https://spring.io/guides/gs/messaging-rabbitmq/#initial) 
+- [X] Dockerize Rabbit
 - [ ] Create TicketStatus
     - [ ] Implement state machine
 - [ ] Create User
