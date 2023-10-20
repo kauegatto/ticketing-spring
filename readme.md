@@ -31,6 +31,7 @@ reason: https://github.com/spring-projects/spring-data-mongodb/issues/3893 ; htt
 - [X] Consume messages
 - [X] Publish messages
 - [X] Dockerize Rabbit
+- [ ] Refactor rabbitMq ConfigurationProperties
 - [ ] Create TicketStatus
     - [ ] Implement state machine
 - [ ] Create User
