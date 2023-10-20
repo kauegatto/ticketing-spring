@@ -16,6 +16,6 @@ public class RabbitTicketPublisher implements Notifier {
   @Override
   public void Notify(TicketEventsEnum event) {
     log.info("Notifying queue: {} of event {}", ticketQueueProperties.getName(), event);
-    rabbitTemplate.convertAndSend(ticketQueueProperties.getName(),event.name());
+    rabbitTemplate.convertAndSend("direct.ticket",ticketQueueProperties.getName(),event.name());
   }
 }
