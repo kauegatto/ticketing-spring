@@ -29,7 +29,7 @@ reason: https://github.com/spring-projects/spring-data-mongodb/issues/3893 ; htt
 - [ ] Connect different services
 - [X] Connect to rabbit
 - [X] Consume messages
-- [ ] Publish messages
+- [X] Publish messages
 - [X] Dockerize Rabbit
 - [ ] Create TicketStatus
     - [ ] Implement state machine

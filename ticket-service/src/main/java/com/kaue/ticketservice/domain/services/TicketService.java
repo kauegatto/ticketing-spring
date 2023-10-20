@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class TicketService {
   private final TicketRepository repository;
-  private final EventDispatcher eventDispatcher;
+  private final Notifier messagePublisher;
   public List<Ticket> findAll(){
     return repository.findAll();
   }
@@ -21,7 +21,7 @@ public class TicketService {
     );
   }
   public Ticket save(Ticket ticket){
-    eventDispatcher.notify(TicketEventsEnum.TICKET_CREATED);
+    messagePublisher.Notify(TicketEventsEnum.TICKET_CREATED);
     return repository.save(ticket);
   }
 }

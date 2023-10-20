@@ -16,6 +16,7 @@ services:
       - 27017
     ports:
       - "27017:27017"
+
   rabbitmq:
     image: rabbitmq:management
     container_name: 'rabbitmq'

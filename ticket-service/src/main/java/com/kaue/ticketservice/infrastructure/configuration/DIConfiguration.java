@@ -1,29 +1,27 @@
 package com.kaue.ticketservice.infrastructure.configuration;
 
 import com.kaue.ticketservice.domain.ports.TicketRepository;
-import com.kaue.ticketservice.domain.services.EventDispatcher;
+import com.kaue.ticketservice.domain.services.Notifier;
 import com.kaue.ticketservice.domain.services.TicketService;
-import com.kaue.ticketservice.infrastructure.amqp.RabbitTicketDispatcher;
+import com.kaue.ticketservice.infrastructure.amqp.RabbitTicketPublisher;
 import com.kaue.ticketservice.infrastructure.properties.TicketQueueProperties;
+import lombok.AllArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@AllArgsConstructor
 public class DIConfiguration {
-  @Autowired
   private TicketRepository ticketRepository;
-  @Autowired
   private TicketQueueProperties ticketQueueProperties;
-  @Autowired
   private RabbitTemplate rabbitTemplate;
   @Bean
   public TicketService ticketService() {
-    return new TicketService(ticketRepository, ticketsEventDispatcher());
+    return new TicketService(ticketRepository, ticketsMessagePublisher());
   }
   @Bean
-  public EventDispatcher ticketsEventDispatcher(){
-    return new RabbitTicketDispatcher(ticketQueueProperties, rabbitTemplate);
+  public Notifier ticketsMessagePublisher(){
+    return new RabbitTicketPublisher(ticketQueueProperties, rabbitTemplate);
   }
 }

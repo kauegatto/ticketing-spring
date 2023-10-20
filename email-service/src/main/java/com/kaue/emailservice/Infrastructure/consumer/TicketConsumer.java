@@ -1,6 +1,5 @@
 package com.kaue.emailservice.Infrastructure.consumer;
 
-import com.kaue.emailservice.domain.event.TicketEventsEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TicketConsumer {
   @RabbitListener(queues = "${broker.queue.ticket.name}")
-  public void listenEmailQueue(@Payload String message){
-    log.info("Received: {}", message);
+  public void listenEmailQueue(@Payload String event){
+    log.info("Received: {}", event);
   }
 }
