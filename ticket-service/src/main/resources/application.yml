@@ -10,9 +10,19 @@ spring:
     rabbitmq:
         addresses: ${amqpURL:amqp://guest:guest@localhost}
 broker:
-    queue:
+    queues:
         ticket:
             name: default.ticket
+    exchanges:
+        ticket:
+            name: direct.ticket
+            type: direct
+    bindings:
+        ticket:
+            exchange: direct.ticket
+            queue: default.ticket
+            routingKey: default.ticket
+
 springdoc:
     swagger-ui:
         path: /docs/swagger.html
