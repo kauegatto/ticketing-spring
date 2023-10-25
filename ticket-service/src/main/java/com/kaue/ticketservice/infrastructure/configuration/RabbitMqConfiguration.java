@@ -3,8 +3,6 @@ package com.kaue.ticketservice.infrastructure.configuration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.*;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
@@ -25,13 +23,6 @@ public class RabbitMqConfiguration {
   private final BrokerConfigurationProperties brokerConfig;
   private final List<Queue> definedQueues = new ArrayList<>();
   private final List<Exchange> definedExchanges = new ArrayList<>();
-
-  @Bean
-  public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-    RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-    rabbitTemplate.setMessageConverter(messageConverter());
-    return rabbitTemplate;
-  }
 
   @Bean
   public MessageConverter messageConverter() {
