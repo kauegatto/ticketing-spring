@@ -41,7 +41,7 @@ Criando dashboard micrometer:
 2. Em Id, coloque `4701`
 3. Selecione seu data source e seja feliz :)
 4. Se quiser adicionar outros dashboards, fique a vontade, temos diversos do spring, busque-os em: https://grafana.com/grafana/dashboards/
-![Importing grafana](https://raw.githubusercontent.com/kauegatto/ticketing-spring-microservices/main/docs/grafana-importing.jpg)
+[Check for help](https://raw.githubusercontent.com/kauegatto/ticketing-spring-microservices/main/docs/grafana-importing.jpg)
 
 Como as configurações do grafana estão salvas em um volume, elas não serão perdidas!
 ![Grafana](https://raw.githubusercontent.com/kauegatto/ticketing-spring-microservices/main/docs/grafana-functional.jpg)
