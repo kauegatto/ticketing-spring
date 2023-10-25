@@ -1,13 +1,17 @@
 ### Disclaimer
-This project doesn't aim to provide best practices of any regards and has educational purposes of learning some SpringBoot and DevOps code by practice. 
-
-Check Todos for a better "roadmap".
+This project has educational purposes of learning tools, DevOps principles, Spring Boot, microservices and Java by practice. Don't take the code as an absolute best-practices guide, there will be bugs which I won't fix because I may judge it's not worth it, there may be refactors I won't do for same purpose. Take everything with a grain of salt 🧂
 
 # Features
 ## Hexagonal Architecture
-todo
+Esse projeto usa arquitetura hexagonal (ports and adapters), deixando a camada de domínio protegida de regras de aplicação e/ou infraestrutura. Trabalhamos em cima de abstrações e tentamos fortalecer também os princípios SOLID. 
+
+[![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dracula&quote=Dependa%20de%20abstra%C3%A7%C3%B5es%20e%20n%C3%A3o%20de%20implementa%C3%A7%C3%B5es&author=Bob%20Martin)](test)
+
+[![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dracula&quote=Programe%20voltado%20%C3%A0%20interface%2C%20n%C3%A3o%20%C3%A0%20implementa%C3%A7%C3%A3o&author=GoF)](test)
+
+[Veja meu post sobre solid!](https://dev.to/kauegatto/solid-um-guia-diferente-162m)
 ## Dockerized Services & Infrastructure
-todo
+Serviços e principalmente infraestrutura são dockerizados e já estão configurados, com um simples `docker compose-up`, você já possui mongoDB, rabbitMQ, grafana, prometheus configurados e rodando :)
 ## Declarative RabbitMQ
 Declare RabbitMQ (or any other amqp) declarables in a simple yaml format:
 ```yaml
@@ -29,19 +33,20 @@ broker:
 We use spring actuator to provide metrics, prometheus to collect & STORE metrics, in order to provide data to Grafana. Everything is containerized and can be ran with a simple `docker-compose up`.
 
 Aqui usamos o Micrometer para permitir a exportação de dados do actuator em um formato que o prometheus aceita.
-
+![prometheus](https://raw.githubusercontent.com/kauegatto/ticketing-spring-microservices/main/docs/prometheus001.jpg)
 ### Grafana Configuration
 O login padrão é ``admin : admin``
 Você deve então adicionar prometheus como um data source: caso esteja usando o docker-compose de infraestrutura, pode usar o DNS: `prometheus:9090`
 
 Criando dashboard micrometer:
-
 1. Entre na parte de dashboards -> import
 2. Em Id, coloque `4701`
 3. Selecione seu data source e seja feliz :)
 4. Se quiser adicionar outros dashboards, fique a vontade, temos diversos do spring, busque-os em: https://grafana.com/grafana/dashboards/
+![Importing grafana](https://raw.githubusercontent.com/kauegatto/ticketing-spring-microservices/main/docs/grafana-importing.jpg)
 
 Como as configurações do grafana estão salvas em um volume, elas não serão perdidas!
+![Grafana](https://raw.githubusercontent.com/kauegatto/ticketing-spring-microservices/main/docs/grafana-functional.jpg)
 ## Important: 
 Add `--add-opens=java.base/java.time=all-unnamed` to your vm options
 
@@ -71,7 +76,8 @@ reason: https://github.com/spring-projects/spring-data-mongodb/issues/3893 ; htt
 - [X] Publish messages
 - [X] Dockerize Rabbit
 - [X] Refactor rabbitMq ConfigurationProperties
-- [X] Allow creation of declarative lists, exchanges and bindings
+- [X] Allow creation of declarative AMQP lists, exchanges and bindings
+- [X] Add Grafana
 - [ ] Create TicketStatus
     - [ ] Implement state machine
 - [ ] Create User
