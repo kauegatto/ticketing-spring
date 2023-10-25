@@ -4,6 +4,7 @@ This project has educational purposes of learning tools, DevOps principles, Spri
 # Features
 ## Hexagonal Architecture
 Esse projeto usa arquitetura hexagonal (ports and adapters), deixando a camada de domínio protegida de regras de aplicação e/ou infraestrutura. Trabalhamos em cima de abstrações e tentamos fortalecer também os princípios SOLID. [Veja meu post sobre solid!](https://dev.to/kauegatto/solid-um-guia-diferente-162m)
+
 [![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dracula&quote=Dependa%20de%20abstra%C3%A7%C3%B5es%20e%20n%C3%A3o%20de%20implementa%C3%A7%C3%B5es&author=Bob%20Martin)](test)
 [![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dracula&quote=Programe%20voltado%20%C3%A0%20interface%2C%20n%C3%A3o%20%C3%A0%20implementa%C3%A7%C3%A3o&author=GoF)](test)
 
