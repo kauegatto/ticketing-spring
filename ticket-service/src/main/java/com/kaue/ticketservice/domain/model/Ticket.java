@@ -38,5 +38,15 @@ public class Ticket {
         this.updatedDate = updatedDate;
         this.resolutionDate = resolutionDate;
     }
+
+    /**
+     * Use factory methods instead of overloaded constructors to avoid @PersistenceCreator.
+     * With an all-argument constructor needed for optimal performance, we usually want to expose more application use case specific constructors that omit things like auto-generated identifiers etc
+     * It’s an established pattern to rather use static factory methods to expose these variants of the all-args constructor. - Spring Docs
+     * @return Domain Specific Constructor.
+     */
+    public static Ticket createTicket(String requesterEmail, String title, String description){
+        return new Ticket(requesterEmail,null,title,description,Instant.now(), Instant.now(), null);
+    }
 }
 

@@ -14,8 +14,8 @@ import java.util.List;
 @Component
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface TicketMapper {
-    @Mapping(target = "updatedDate", ignore = true)
-    @Mapping(target = "createDate", ignore = true)
+    @Mapping(target = "updatedDate", expression = "java(Instant.now())")
+    @Mapping(target = "createDate", expression = "java(Instant.now())")
     Ticket ticketCreationDTOToTicket(TicketCreationDTO ticketCreationDTO);
     TicketResponseDTO ticketToTicketResponseDTO(Ticket ticket);
     List<TicketResponseDTO> TicketListToTicketResponseDTOList(List<Ticket> tickets);
