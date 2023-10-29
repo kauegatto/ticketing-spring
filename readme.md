@@ -34,7 +34,7 @@ Cuide de estados de uma maneira mais elegante:
     ;
   }
 ```
-![SSM](https://github.com/kauegatto/ticketing-spring-microservices/blob/main/docs/mermaid_states.png?raw=true)
+[![](https://mermaid.ink/img/pako:eNp1kFFrgzAUhf-K3McRJUZNjA-DsUoRnBYdK9scJdTQClOLi2Od-N-XKmNrx0IeDt-5J5ecAbZtKSGANyWUXFRi14nafCdFY-jzfPVimOa1kYTrGWgxgds4zcPFOYuSzSpLl1mY57PxC_wJXXp5Gj_8561vovsoWW6ycBU_ziNn6HI7IKhlV4uq1P8aToEC1F7WsoBAy9dqt1cFFM2oB0Wv2vzYbCFQXS8R9Ifyp4dveBANBAN8QEAItzDBhGLXYfoyF8FRY2Y53OMO9TGljHLsjgg-21a_gC3GbOp5vm1r4VOXI5Blpdrubi5-6n_a8TQFTivHLx04cqw?type=jpg)](https://mermaid.live/edit#pako:eNp1kFFrgzAUhf-K3McRJUZNjA-DsUoRnBYdK9scJdTQClOLi2Od-N-XKmNrx0IeDt-5J5ecAbZtKSGANyWUXFRi14nafCdFY-jzfPVimOa1kYTrGWgxgds4zcPFOYuSzSpLl1mY57PxC_wJXXp5Gj_8561vovsoWW6ycBU_ziNn6HI7IKhlV4uq1P8aToEC1F7WsoBAy9dqt1cFFM2oB0Wv2vzYbCFQXS8R9Ifyp4dveBANBAN8QEAItzDBhGLXYfoyF8FRY2Y53OMO9TGljHLsjgg-21a_gC3GbOp5vm1r4VOXI5Blpdrubi5-6n_a8TQFTivHLx04cqw)
 ## Dockerized Services & Infrastructure
 Serviços e principalmente infraestrutura são dockerizados e já estão configurados, com um simples `docker compose-up`, você já possui mongoDB, rabbitMQ, grafana, prometheus configurados e rodando :)
 ## Declarative RabbitMQ
