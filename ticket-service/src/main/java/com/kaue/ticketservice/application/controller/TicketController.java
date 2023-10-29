@@ -20,5 +20,8 @@ public interface TicketController {
     @Operation(summary = "Get a ticket given it's UUID", description = "This can only be done either by an administrator or the requester.")
     ResponseEntity<TicketResponseDTO> getById(@PathVariable String id)
             throws TicketNotFoundException;
+    @Operation(summary = "Assign a ticket to someone", description = "Get a ticket given it's id and assign it to someone.")
+    ResponseEntity<TicketResponseDTO> assignToAgent(@PathVariable String id, @RequestBody String assigneeEmail)
+            throws TicketNotFoundException;
     ResponseEntity<TicketResponseDTO> create(@RequestBody TicketCreationDTO ticket);
 }
