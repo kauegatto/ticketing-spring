@@ -38,11 +38,11 @@ public class TicketControllerImpl implements TicketController {
         log.info("Found: {}", ticketResponse);
         return ResponseEntity.ok(ticketResponse);
     }
-
-    @Override
-    public ResponseEntity<TicketResponseDTO> assignToAgent(String id, String assigneeEmail) throws TicketNotFoundException {
+    @PostMapping(value = "/{id}/assign", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TicketResponseDTO> assignToAgent(String id, @RequestBody String assigneeEmail) throws TicketNotFoundException {
         log.info("Assign of ticket: {} to agent : {}", id, assigneeEmail);
-        var ticketResponse = ticketMapper.ticketToTicketResponseDTO(ticketService.assignAndUpdate(id, assigneeEmail));
+        var ticket = ticketService.assignAndUpdate(id, assigneeEmail);
+        var ticketResponse = ticketMapper.ticketToTicketResponseDTO(ticket);
         return ResponseEntity.ok(ticketResponse);
     }
 
