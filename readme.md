@@ -7,7 +7,34 @@ Esse projeto usa arquitetura hexagonal (ports and adapters), deixando a camada d
 
 [![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dracula&quote=Dependa%20de%20abstra%C3%A7%C3%B5es%20e%20n%C3%A3o%20de%20implementa%C3%A7%C3%B5es&author=Bob%20Martin)](test)
 [![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dracula&quote=Programe%20voltado%20%C3%A0%20interface%2C%20n%C3%A3o%20%C3%A0%20implementa%C3%A7%C3%A3o&author=GoF)](test)
+## SPRING STATE MACHINES
+Cuide de estados de uma maneira mais elegante:
+```java
+  public void configure(StateMachineTransitionConfigurer<State, Event> transitions) throws Exception {
+    transitions
+            .withExternal()
+            .source(State.NEW).target(State.IN_PROGRESS)
+            .event(Event.START_SOLVING)
 
+            .and().withExternal()
+            .source(State.IN_PROGRESS).target(State.WAITING_REPLY)
+            .event(Event.NEEDS_REPLY)
+
+            .and().withExternal()
+            .source(State.IN_PROGRESS).target(State.COMPLETED)
+            .event(Event.COMPLETE)
+
+            .and().withExternal()
+            .source(State.IN_PROGRESS).target(State.CLOSED)
+            .event(Event.CLOSE)
+
+            .and().withExternal()
+            .source(State.NEW).target(State.CLOSED)
+            .event(Event.CLOSE)
+    ;
+  }
+```
+![SSM](https://github.com/kauegatto/ticketing-spring-microservices/blob/main/docs/mermaid_states.png?raw=true)
 ## Dockerized Services & Infrastructure
 Serviços e principalmente infraestrutura são dockerizados e já estão configurados, com um simples `docker compose-up`, você já possui mongoDB, rabbitMQ, grafana, prometheus configurados e rodando :)
 ## Declarative RabbitMQ
