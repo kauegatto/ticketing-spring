@@ -1,8 +1,7 @@
 package com.kaue.ticketservice.infrastructure.stateMachines;
 
-import com.kaue.ticketservice.domain.model.state.TicketStatusState;
-import com.kaue.ticketservice.domain.model.state.TicketStatusState.events;
-import com.kaue.ticketservice.domain.model.state.TicketStatusState.states;
+import com.kaue.ticketservice.domain.model.state.TicketStatusState.Event;
+import com.kaue.ticketservice.domain.model.state.TicketStatusState.State;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +12,6 @@ import org.springframework.statemachine.config.builders.StateMachineStateConfigu
 import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
 import org.springframework.statemachine.listener.StateMachineListener;
 import org.springframework.statemachine.listener.StateMachineListenerAdapter;
-import org.springframework.statemachine.state.State;
 
 import java.util.EnumSet;
 import java.util.Objects;
@@ -21,51 +19,51 @@ import java.util.Objects;
 @Configuration
 @EnableStateMachine
 @Slf4j
-public class TicketStatusStateMachineConfiguration extends EnumStateMachineConfigurerAdapter<states,
-        events> {
+public class TicketStatusStateMachineConfiguration extends EnumStateMachineConfigurerAdapter<State,
+        Event> {
   @Override
-  public void configure(StateMachineConfigurationConfigurer<states, events> config) throws Exception {
+  public void configure(StateMachineConfigurationConfigurer<State, Event> config) throws Exception {
       config
         .withConfiguration()
         .autoStartup(true)
         .listener(listener());
     }
 
-  public void configure(StateMachineStateConfigurer<states, events> states) throws Exception {
+  public void configure(StateMachineStateConfigurer<State, Event> states) throws Exception {
     states
             .withStates()
-            .initial(TicketStatusState.states.NEW)
-            .states(EnumSet.allOf(TicketStatusState.states.class));
+            .initial(State.NEW)
+            .states(EnumSet.allOf(State.class));
   }
 
-  public void configure(StateMachineTransitionConfigurer<states, events> transitions) throws Exception {
+  public void configure(StateMachineTransitionConfigurer<State, Event> transitions) throws Exception {
     transitions
             .withExternal()
-            .source(states.NEW).target(states.IN_PROGRESS)
-            .event(events.START_SOLVING)
+            .source(State.NEW).target(State.IN_PROGRESS)
+            .event(Event.START_SOLVING)
 
             .and().withExternal()
-            .source(states.IN_PROGRESS).target(states.WAITING_REPLY)
-            .event(events.NEEDS_REPLY)
+            .source(State.IN_PROGRESS).target(State.WAITING_REPLY)
+            .event(Event.NEEDS_REPLY)
 
             .and().withExternal()
-            .source(states.IN_PROGRESS).target(states.COMPLETED)
-            .event(events.COMPLETE)
+            .source(State.IN_PROGRESS).target(State.COMPLETED)
+            .event(Event.COMPLETE)
 
             .and().withExternal()
-            .source(states.IN_PROGRESS).target(states.CLOSED)
-            .event(events.CLOSE)
+            .source(State.IN_PROGRESS).target(State.CLOSED)
+            .event(Event.CLOSE)
 
             .and().withExternal()
-            .source(states.NEW).target(states.CLOSED)
-            .event(events.CLOSE)
+            .source(State.NEW).target(State.CLOSED)
+            .event(Event.CLOSE)
     ;
   }
   @Bean
-  public StateMachineListener<states, events> listener() {
+  public StateMachineListener<State, Event> listener() {
     return new StateMachineListenerAdapter<>() {
       @Override
-      public void stateChanged(State<states, events> from, State<states, events> to) {
+      public void stateChanged(org.springframework.statemachine.state.State<State, Event> from, org.springframework.statemachine.state.State<State, Event> to) {
         if(Objects.isNull(from)) {
           log.info("Ticket state set to " + to.getId().name());
           return;

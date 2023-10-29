@@ -1,13 +1,13 @@
 package com.kaue.ticketservice.domain.model.state;
 public class TicketStatusState {
-  public enum states {
+  public enum State {
     NEW,
     IN_PROGRESS,
     WAITING_REPLY,
     COMPLETED,
     CLOSED
   }
-  public enum events {
+  public enum Event {
     START_SOLVING,
     CLOSE,
     COMPLETE,
