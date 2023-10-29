@@ -33,8 +33,7 @@ public class TicketService {
   public Ticket assignAndUpdate(String id, String assigneeEmail){
     var ticket = findById(id);
     ticket.setAssignee(assigneeEmail);
-    stateMachine.sendEvent(START_SOLVING);
-    ticket.setState(stateMachine.getState());
+    ticket.setState(stateMachine.sendEvent(START_SOLVING, id));
     return repository.save(ticket);
   }
 }

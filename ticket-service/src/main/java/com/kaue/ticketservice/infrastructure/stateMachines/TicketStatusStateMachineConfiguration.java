@@ -5,7 +5,7 @@ import com.kaue.ticketservice.domain.model.state.TicketStatusState.State;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.statemachine.config.EnableStateMachine;
+import org.springframework.statemachine.config.EnableStateMachineFactory;
 import org.springframework.statemachine.config.EnumStateMachineConfigurerAdapter;
 import org.springframework.statemachine.config.builders.StateMachineConfigurationConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
@@ -17,7 +17,7 @@ import java.util.EnumSet;
 import java.util.Objects;
 
 @Configuration
-@EnableStateMachine
+@EnableStateMachineFactory
 @Slf4j
 public class TicketStatusStateMachineConfiguration extends EnumStateMachineConfigurerAdapter<State,
         Event> {
@@ -33,7 +33,9 @@ public class TicketStatusStateMachineConfiguration extends EnumStateMachineConfi
     states
             .withStates()
             .initial(State.NEW)
-            .states(EnumSet.allOf(State.class));
+            .states(EnumSet.allOf(State.class))
+            .end(State.CLOSED)
+            .end(State.COMPLETED);
   }
 
   public void configure(StateMachineTransitionConfigurer<State, Event> transitions) throws Exception {
