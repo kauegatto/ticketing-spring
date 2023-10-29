@@ -63,12 +63,12 @@ reason: https://github.com/spring-projects/spring-data-mongodb/issues/3893 ; htt
 - [X] Use MongoDB
 - [X] Refactor Project Structure
     - [X] Create Services
-    - [+-] Create Rich Domain Classes
+    - [ ] Create Rich Domain Classes
     - [X] Create Appropriate Mappers (Ports and Adapters)
-- [ ] Figure out how to map the id correctly without sacrificing a POJO  with Spring Data MongoDB
+- [X] Figure out how to map the id correctly without sacrificing a POJO  with Spring Data MongoDB
 - [X] Dockerize Java+Spring and make it start the whole app in compose
 - [X] Create different services
-- [ ] Connect different services
+- [X] Connect different services
 - [X] Connect to rabbit
 - [X] Consume messages
 - [X] Publish messages
@@ -76,8 +76,8 @@ reason: https://github.com/spring-projects/spring-data-mongodb/issues/3893 ; htt
 - [X] Refactor rabbitMq ConfigurationProperties
 - [X] Allow creation of declarative AMQP lists, exchanges and bindings
 - [X] Add Grafana
-- [ ] Create TicketStatus
-    - [ ] Implement state machine
+- [X] Create TicketStatus
+    - [X] Implement state machine using spring state machine
 - [ ] Create User
 - [ ] Create SLA's associated with each status
     - [ ] Cache it
