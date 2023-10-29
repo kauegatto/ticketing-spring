@@ -6,10 +6,8 @@ import com.kaue.ticketservice.domain.exceptions.TicketNotFoundException;
 import com.kaue.ticketservice.domain.services.TicketService;
 import com.kaue.ticketservice.infrastructure.mappers.TicketMapper;
 import com.kaue.ticketservice.infrastructure.repository.UserRepository;
-import jdk.jshell.spi.ExecutionControl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,9 +40,10 @@ public class TicketControllerImpl implements TicketController {
     }
 
     @Override
-    public ResponseEntity<TicketResponseDTO> assignToAgent(String id, String assigneeEmail) throws TicketNotFoundException, NotImplementedException {
+    public ResponseEntity<TicketResponseDTO> assignToAgent(String id, String assigneeEmail) throws TicketNotFoundException {
         log.info("Assign of ticket: {} to agent : {}", id, assigneeEmail);
-        throw new NotImplementedException("todo");
+        var ticketResponse = ticketMapper.ticketToTicketResponseDTO(ticketService.assignAndUpdate(id, assigneeEmail));
+        return ResponseEntity.ok(ticketResponse);
     }
 
     @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE)

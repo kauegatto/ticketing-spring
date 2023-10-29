@@ -3,6 +3,7 @@ package com.kaue.ticketservice.infrastructure.stateMachines;
 import com.kaue.ticketservice.domain.model.state.TicketStatusState;
 import com.kaue.ticketservice.domain.model.state.TicketStatusState.events;
 import com.kaue.ticketservice.domain.model.state.TicketStatusState.states;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.config.EnableStateMachine;
@@ -15,9 +16,11 @@ import org.springframework.statemachine.listener.StateMachineListenerAdapter;
 import org.springframework.statemachine.state.State;
 
 import java.util.EnumSet;
+import java.util.Objects;
 
 @Configuration
 @EnableStateMachine
+@Slf4j
 public class TicketStatusStateMachineConfiguration extends EnumStateMachineConfigurerAdapter<states,
         events> {
   @Override
@@ -63,7 +66,12 @@ public class TicketStatusStateMachineConfiguration extends EnumStateMachineConfi
     return new StateMachineListenerAdapter<>() {
       @Override
       public void stateChanged(State<states, events> from, State<states, events> to) {
-        System.out.println("Ticket state changed from " + from.getId().name() + " to " + to.getId().name());
+        if(Objects.isNull(from)) {
+          log.info("Ticket state set to " + to.getId().name());
+          return;
+        }
+        Objects.requireNonNull(from.getId());
+        log.info("Ticket state changed from " + from.getId().name() + " to " + to.getId().name());
       }
     };
   }

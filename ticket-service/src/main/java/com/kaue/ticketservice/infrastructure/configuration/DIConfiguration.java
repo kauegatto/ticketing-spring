@@ -6,6 +6,7 @@ import com.kaue.ticketservice.domain.services.Notifier;
 import com.kaue.ticketservice.domain.services.TicketService;
 import com.kaue.ticketservice.infrastructure.amqp.RabbitBasePublisher;
 import com.kaue.ticketservice.infrastructure.properties.BrokerConfigurationProperties;
+import com.kaue.ticketservice.infrastructure.stateMachines.TicketStatusStateMachineHandler;
 import lombok.AllArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +19,7 @@ public class DIConfiguration {
   private TicketRepository ticketRepository;
   private BrokerConfigurationProperties brokerConfigurationProperties;
   private RabbitTemplate rabbitTemplate;
-  private StateMachine<TicketStatusState.states, TicketStatusState.events> ticketStatusStateMachine;
+  private TicketStatusStateMachineHandler ticketStatusStateMachine;
   @Bean
   public TicketService ticketService() {
     return new TicketService(ticketRepository, ticketsMessagePublisher(),ticketStatusStateMachine);

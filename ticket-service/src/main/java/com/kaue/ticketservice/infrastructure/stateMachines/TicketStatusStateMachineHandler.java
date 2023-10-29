@@ -9,15 +9,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class TicketStatusStateMachineHandler implements StateMachineHandler<events,states> {
-  private final StateMachine<events, states> stateMachine;
+public class TicketStatusStateMachineHandler implements StateMachineHandler<states,events>{
+  private final StateMachine<states, events> stateMachine;
   @Override
-  public void sendEvent(states state) {
-    stateMachine.sendEvent(state);
+  public void sendEvent(events events) {
+    stateMachine.sendEvent(events);
   }
-
   @Override
-  public events getState() {
+  public states getState() {
     return stateMachine.getState().getId();
   }
 }
