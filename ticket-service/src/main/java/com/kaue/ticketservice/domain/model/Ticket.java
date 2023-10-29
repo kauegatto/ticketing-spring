@@ -1,15 +1,19 @@
 package com.kaue.ticketservice.domain.model;
 import com.kaue.ticketservice.domain.exceptions.InvalidParameterException;
-import com.kaue.ticketservice.domain.model.state.TicketStatusState;
+import com.kaue.ticketservice.domain.model.state.TicketStatusState.State;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import lombok.*;
 import org.springframework.data.annotation.LastModifiedDate;
 import java.time.Instant;
 import java.time.OffsetDateTime;
+import java.util.UUID;
 
 @ToString
+@AllArgsConstructor
 public class Ticket {
+    @Getter
+    final private String id;
     @Schema(description = "User email")
     @Getter
     final private String requesterEmail;
@@ -22,26 +26,16 @@ public class Ticket {
     @Schema(description = "Ticket description")
     @Getter @Setter
     private String description;
+    @Getter @Setter @Schema(description = "Ticket state, follows specific state machine found on docs")
+    private State state; // todo rethink about getters and setters here, also shouldn't each ticket have a state machine?
     @Schema(description = "Create date")
     @Getter
     final private Instant createDate;
     @Getter @Setter @LastModifiedDate
-    private Instant  updatedDate;
+    private Instant  updatedDate; // todo remove it
     @Schema(description = "Resolution date")
     @Getter @Setter
     private OffsetDateTime resolutionDate;
-    @Getter @Setter // todo think about it
-    private TicketStatusState.states state;
-
-    public Ticket(String requesterEmail, String assigneeEmail, String title, String description, Instant createDate, Instant updatedDate, OffsetDateTime resolutionDate) {
-        this.requesterEmail = requesterEmail;
-        this.assigneeEmail = assigneeEmail;
-        this.title = title;
-        this.description = description;
-        this.createDate = createDate;
-        this.updatedDate = updatedDate;
-        this.resolutionDate = resolutionDate;
-    }
 
     public void setAssignee(String assigneeEmail){
         if (assigneeEmail.isEmpty()){
@@ -57,7 +51,7 @@ public class Ticket {
      * @return Domain Specific Constructor.
      */
     public static Ticket createTicket(String requesterEmail, String title, String description){
-        return new Ticket(requesterEmail,null,title,description,Instant.now(), Instant.now(), null);
+        return new Ticket(UUID.randomUUID().toString(), requesterEmail,null,title,description, State.NEW,Instant.now(), Instant.now(), null);
     }
 }
 
