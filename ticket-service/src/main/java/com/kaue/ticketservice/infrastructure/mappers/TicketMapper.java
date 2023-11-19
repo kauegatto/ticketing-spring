@@ -15,15 +15,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING, injectionStrategy = InjectionStrategy.CONSTRUCTOR, uses = TicketFactory.class)
-@NoArgsConstructor
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 @AllArgsConstructor
 public abstract class TicketMapper {
-    private TicketFactory ticketFactory;
     public abstract TicketResponseDTO ticketToTicketResponseDTO(Ticket ticket);
     public abstract List<TicketResponseDTO> TicketListToTicketResponseDTOList(List<Ticket> tickets);
     public Ticket ticketCreationDTOToTicket(TicketCreationDTO ticketCreationDTO){
-        return ticketFactory.createTicket(ticketCreationDTO.requesterEmail(),ticketCreationDTO.title(), ticketCreationDTO.description());
+        return TicketFactory.createTicket(ticketCreationDTO.requesterEmail(),ticketCreationDTO.title(), ticketCreationDTO.description());
     }
 }
 

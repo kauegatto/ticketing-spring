@@ -11,7 +11,6 @@ import java.time.OffsetDateTime;
 @ToString
 @AllArgsConstructor
 public class Ticket {
-    final private EmailValidator emailValidator;
     @Getter
     final private String id;
     @Schema(description = "User email")
@@ -38,7 +37,7 @@ public class Ticket {
     private OffsetDateTime resolutionDate;
 
     public void setAssignee(String assigneeEmail){
-        emailValidator.enforceValid(assigneeEmail);
+        // validation (todo)
         this.assigneeEmail = assigneeEmail;
     }
 }

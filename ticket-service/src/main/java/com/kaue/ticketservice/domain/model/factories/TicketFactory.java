@@ -15,8 +15,7 @@ import java.util.UUID;
  */
 @Component
 public class TicketFactory {
-  EmailValidator emailValidator;
-  public Ticket createTicket(String requesterEmail, String title, String description){
-    return new Ticket(emailValidator, UUID.randomUUID().toString(), requesterEmail,null,title,description, TicketStatusState.State.NEW,Instant.now(), Instant.now(), null);
+  public static Ticket createTicket(String requesterEmail, String title, String description){
+    return new Ticket(UUID.randomUUID().toString(), requesterEmail,null,title,description, TicketStatusState.State.NEW,Instant.now(), Instant.now(), null);
   }
 }
