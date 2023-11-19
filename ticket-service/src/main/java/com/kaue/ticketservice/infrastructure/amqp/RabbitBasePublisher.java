@@ -1,6 +1,6 @@
 package com.kaue.ticketservice.infrastructure.amqp;
 
-import com.kaue.ticketservice.domain.services.Notifier;
+import com.kaue.ticketservice.domain.ports.Notifier;
 import com.kaue.ticketservice.infrastructure.properties.BrokerConfigurationProperties;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

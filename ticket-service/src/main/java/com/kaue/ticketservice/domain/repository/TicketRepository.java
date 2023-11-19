@@ -1,4 +1,4 @@
-package com.kaue.ticketservice.domain.ports;
+package com.kaue.ticketservice.domain.repository;
 
 import com.kaue.ticketservice.domain.model.Ticket;
 

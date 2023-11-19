@@ -1,4 +1,4 @@
-package com.kaue.ticketservice.domain.services;
+package com.kaue.ticketservice.domain.ports;
 
 public interface Notifier{
   void Notify(Object message);

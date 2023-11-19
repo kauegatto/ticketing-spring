@@ -5,7 +5,9 @@ import com.kaue.ticketservice.domain.exceptions.TicketNotFoundException;
 import com.kaue.ticketservice.domain.model.Ticket;
 import com.kaue.ticketservice.domain.model.state.TicketStatusState.Event;
 import com.kaue.ticketservice.domain.model.state.TicketStatusState.State;
-import com.kaue.ticketservice.domain.ports.TicketRepository;
+import com.kaue.ticketservice.domain.ports.Notifier;
+import com.kaue.ticketservice.domain.ports.StateMachineHandler;
+import com.kaue.ticketservice.domain.repository.TicketRepository;
 import lombok.AllArgsConstructor;
 
 import java.util.List;

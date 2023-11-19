@@ -87,8 +87,24 @@
 			<artifactId>spring-statemachine-core</artifactId>
 			<version>3.2.1</version>
 		</dependency>
+		<dependency>
+			<groupId>com.sanctionco.jmail</groupId>
+			<artifactId>jmail</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>mongodb</artifactId>
+			<version>1.19.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers</artifactId>
+			<version>1.19.2</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
