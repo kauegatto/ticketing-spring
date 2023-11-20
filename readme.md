@@ -7,7 +7,34 @@ Esse projeto usa arquitetura hexagonal (ports and adapters), deixando a camada d
 
 [![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dracula&quote=Dependa%20de%20abstra%C3%A7%C3%B5es%20e%20n%C3%A3o%20de%20implementa%C3%A7%C3%B5es&author=Bob%20Martin)](test)
 [![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dracula&quote=Programe%20voltado%20%C3%A0%20interface%2C%20n%C3%A3o%20%C3%A0%20implementa%C3%A7%C3%A3o&author=GoF)](test)
+## SPRING STATE MACHINES
+Cuide de estados de uma maneira mais elegante:
+```java
+  public void configure(StateMachineTransitionConfigurer<State, Event> transitions) throws Exception {
+    transitions
+            .withExternal()
+            .source(State.NEW).target(State.IN_PROGRESS)
+            .event(Event.START_SOLVING)
 
+            .and().withExternal()
+            .source(State.IN_PROGRESS).target(State.WAITING_REPLY)
+            .event(Event.NEEDS_REPLY)
+
+            .and().withExternal()
+            .source(State.IN_PROGRESS).target(State.COMPLETED)
+            .event(Event.COMPLETE)
+
+            .and().withExternal()
+            .source(State.IN_PROGRESS).target(State.CLOSED)
+            .event(Event.CLOSE)
+
+            .and().withExternal()
+            .source(State.NEW).target(State.CLOSED)
+            .event(Event.CLOSE)
+    ;
+  }
+```
+[![](https://mermaid.ink/img/pako:eNp1kFFrgzAUhf-K3McRJUZNjA-DsUoRnBYdK9scJdTQClOLi2Od-N-XKmNrx0IeDt-5J5ecAbZtKSGANyWUXFRi14nafCdFY-jzfPVimOa1kYTrGWgxgds4zcPFOYuSzSpLl1mY57PxC_wJXXp5Gj_8561vovsoWW6ycBU_ziNn6HI7IKhlV4uq1P8aToEC1F7WsoBAy9dqt1cFFM2oB0Wv2vzYbCFQXS8R9Ifyp4dveBANBAN8QEAItzDBhGLXYfoyF8FRY2Y53OMO9TGljHLsjgg-21a_gC3GbOp5vm1r4VOXI5Blpdrubi5-6n_a8TQFTivHLx04cqw?type=jpg)](https://mermaid.live/edit#pako:eNp1kFFrgzAUhf-K3McRJUZNjA-DsUoRnBYdK9scJdTQClOLi2Od-N-XKmNrx0IeDt-5J5ecAbZtKSGANyWUXFRi14nafCdFY-jzfPVimOa1kYTrGWgxgds4zcPFOYuSzSpLl1mY57PxC_wJXXp5Gj_8561vovsoWW6ycBU_ziNn6HI7IKhlV4uq1P8aToEC1F7WsoBAy9dqt1cFFM2oB0Wv2vzYbCFQXS8R9Ifyp4dveBANBAN8QEAItzDBhGLXYfoyF8FRY2Y53OMO9TGljHLsjgg-21a_gC3GbOp5vm1r4VOXI5Blpdrubi5-6n_a8TQFTivHLx04cqw)
 ## Dockerized Services & Infrastructure
 Serviços e principalmente infraestrutura são dockerizados e já estão configurados, com um simples `docker compose-up`, você já possui mongoDB, rabbitMQ, grafana, prometheus configurados e rodando :)
 ## Declarative RabbitMQ
