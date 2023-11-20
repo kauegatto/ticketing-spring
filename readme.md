@@ -1,7 +1,7 @@
 ### Disclaimer
 This project has educational purposes of learning tools, DevOps principles, Spring Boot, microservices and Java by practice. Don't take the code as an absolute best-practices guide, there will be bugs which I won't fix because I may judge it's not worth it, there may be refactors I won't do for same purpose. Take everything with a grain of salt 🧂
 
-# Features
+# Sobre
 ## Hexagonal Architecture
 Esse projeto usa arquitetura hexagonal (ports and adapters), deixando a camada de domínio protegida de regras de aplicação e/ou infraestrutura. Trabalhamos em cima de abstrações e tentamos fortalecer também os princípios SOLID. [Veja meu post sobre solid!](https://dev.to/kauegatto/solid-um-guia-diferente-162m)
 
@@ -72,6 +72,27 @@ Criando dashboard micrometer:
 
 Como as configurações do grafana estão salvas em um volume, elas não serão perdidas!
 ![Grafana](https://raw.githubusercontent.com/kauegatto/ticketing-spring-microservices/main/docs/grafana-functional.jpg)
+
+## Testes de integração de verdade:
+Esse projeto conta com (poucos, por preguiça) testes de integração, mas testes de verdade, onde chamo um service, que posteriormente acessa um repositório (que acessa um banco de dados real) e um basePublisher, que usa um rabbitMQ real.
+Essa configuração  é feita usando `testContainers`, framework open source. 
+
+Toda vez que um teste começa, a última imagem de rabbitmq e docker são baixadas e sobem em portas aleatórias disponíveis.
+Então, nosso projeto dá override nas configurações antigas e se conecta à esse container com uma porta aleatória configurado, e usa ele até o fim do ciclo de vida da classe de teste.
+
+Ainda tem algumas melhorias que gostaria de fazer (como a imagem ser setada no `application-test.yml`, mas funciona 😃
+```java
+  @Container
+  private static final MongoDBContainer MONGO_DB_CONTAINER = new MongoDBContainer("mongo:latest");
+  @Container
+  private static final RabbitMQContainer RABBIT_MQ_CONTAINER = new RabbitMQContainer("rabbitmq:management");
+  @DynamicPropertySource
+  static void mongoDbProperties(DynamicPropertyRegistry registry) {
+    MONGO_DB_CONTAINER.start();
+    registry.add("spring.data.mongodb.uri", MONGO_DB_CONTAINER::getReplicaSetUrl);
+    registry.add("spring.rabbitmq.addresses",() -> "amqp://guest:guest@localhost:"+RABBIT_MQ_CONTAINER.getAmqpPort());
+  }
+```
 ## Important: 
 Add `--add-opens=java.base/java.time=all-unnamed` to your vm options
 
