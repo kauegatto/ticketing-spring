@@ -7,8 +7,24 @@ Esse projeto usa arquitetura hexagonal (ports and adapters), deixando a camada d
 
 [![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dracula&quote=Dependa%20de%20abstra%C3%A7%C3%B5es%20e%20n%C3%A3o%20de%20implementa%C3%A7%C3%B5es&author=Bob%20Martin)](test)
 [![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dracula&quote=Programe%20voltado%20%C3%A0%20interface%2C%20n%C3%A3o%20%C3%A0%20implementa%C3%A7%C3%A3o&author=GoF)](test)
+### Exemplo:
+```java
+  public Ticket save(Ticket ticket){
+    messagePublisher.Notify(TicketEventsEnum.TICKET_CREATED);
+    return repository.save(ticket);
+  }
+
+  public Ticket assignAndUpdate(String id, String assigneeEmail){
+    var ticket = findById(id);
+    ticket.setAssignee(assigneeEmail);
+    ticket.setState(stateMachine.sendEvent(START_SOLVING, id));
+    return repository.save(ticket);
+  }
+```
+Aqui, stateMachine  é uma abstração própria que se comunica com o framework de máquinas de estado, outro exemplo legal é o `messagePublisher.notify()`, que também é uma abstração própria, e por baixo dos panos se comunica com um Rabbit. A ideia aqui  é separar código de infraestrutura e domínio, permitindo reúso e fácil troca de componentes de infra (rabbit para kafka, por exemplo).
+
 ## SPRING STATE MACHINES
-Cuide de estados de uma maneira mais elegante:
+Cuide de estados de uma maneira mais elegante, enviando eventos de domínio e garantindo que o framework de estados cuide de mover os status!
 ```java
   public void configure(StateMachineTransitionConfigurer<State, Event> transitions) throws Exception {
     transitions
@@ -54,6 +70,7 @@ broker:
             queue: default.ticket
             routingKey: default.ticket
 ```
+Tipos válidos de exchange são: `direct`, `topic`, `fanout` e `headers`
 ## Prometheus & Grafana
 We use spring actuator to provide metrics, prometheus to collect & STORE metrics, in order to provide data to Grafana. Everything is containerized and can be ran with a simple `docker-compose up`.
 
