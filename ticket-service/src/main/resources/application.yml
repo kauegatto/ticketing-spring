@@ -1,4 +1,6 @@
 spring:
+    application:
+        name: "ticket-ms"
     data:
         mongodb:
             authentication-database: admin
