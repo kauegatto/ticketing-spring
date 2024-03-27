@@ -50,14 +50,9 @@ public class RabbitMqConfiguration {
       return new Declarables(); // Return an empty list if no exchanges are configured
     }
 
-    var exchangesList = brokerConfig.getExchanges().values().stream()
+    List<Exchange> exchangesList = brokerConfig.getExchanges().values().stream()
       .filter(Objects::nonNull)
-      .map(exchangeProperties -> switch (exchangeProperties.getType()) {
-        case "direct"  -> new DirectExchange(exchangeProperties.getName());
-        case "fanout"  -> new FanoutExchange(exchangeProperties.getName());
-        // add others
-        default        -> new DirectExchange(exchangeProperties.getName());
-      })
+      .map(exchangeProperties -> (Exchange) new ExchangeBuilder(exchangeProperties.getName(), exchangeProperties.getType()).build())
       .toList();
 
     definedExchanges.addAll(exchangesList);
