@@ -26,6 +26,7 @@ public class RabbitBasePublisher implements Notifier {
       log.error("Queue name is null. Unable to notify.");
     }
   }
+
   private Optional<String> getExchangeName(String exchangeKey) {
     return Optional.ofNullable(brokerConfigurationProperties.getExchanges())
             .map(exchanges -> exchanges.get(exchangeKey))

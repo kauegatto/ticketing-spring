@@ -79,7 +79,7 @@ Essa configuração  é feita usando `testContainers`, framework open source.
 
 Toda vez que um teste começa, a última imagem de rabbitmq e docker são baixadas e sobem em portas aleatórias disponíveis.
 Então, nosso projeto dá override nas configurações antigas e se conecta à esse container com uma porta aleatória configurado, e usa ele até o fim do ciclo de vida da classe de teste.
-
+  
 Ainda tem algumas melhorias que gostaria de fazer (como a imagem ser setada no `application-test.yml`, mas funciona 😃
 ```java
   @Container

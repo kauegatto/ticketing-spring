@@ -4,7 +4,6 @@ import com.kaue.ticketservice.application.controller.TicketControllerImpl;
 import com.kaue.ticketservice.domain.exceptions.InvalidParameterException;
 import com.kaue.ticketservice.domain.exceptions.InvalidTicketBodyException;
 import com.kaue.ticketservice.domain.exceptions.TicketNotFoundException;
-import io.micrometer.core.instrument.config.validate.Validated;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;

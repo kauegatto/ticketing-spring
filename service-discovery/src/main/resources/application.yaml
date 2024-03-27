@@ -1,0 +1,18 @@
+# When the registry starts, it will complain (with a stacktrace) that there are no replica nodes to which the registry can connect. In a production environment, you will want more than one instance of the registry. For our simple purposes, however, it suffices to disable the relevant logging.
+# By default, the registry also tries to register itself, so you need to disable that behavior as well.
+# It is a good convention to put this registry on a separate port when using it locally.
+# From https://spring.io/guides/gs/service-registration-and-discovery
+
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+logging:
+  level:
+    com:
+    netflix:
+      eureka: OFF
+      discovery: off
