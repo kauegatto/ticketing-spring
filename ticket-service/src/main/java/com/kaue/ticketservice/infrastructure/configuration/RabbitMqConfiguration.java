@@ -52,7 +52,12 @@ public class RabbitMqConfiguration {
 
     var exchangesList = brokerConfig.getExchanges().values().stream()
       .filter(Objects::nonNull)
-      .map(exchangeProperties -> new DirectExchange(exchangeProperties.getName())) // todo use correct exchange type
+      .map(exchangeProperties -> switch (exchangeProperties.getType()) {
+        case "direct"  -> new DirectExchange(exchangeProperties.getName());
+        case "fanout"  -> new FanoutExchange(exchangeProperties.getName());
+        // add others
+        default        -> new DirectExchange(exchangeProperties.getName());
+      })
       .toList();
 
     definedExchanges.addAll(exchangesList);
