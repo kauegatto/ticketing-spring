@@ -90,8 +90,12 @@ Criando dashboard micrometer:
 Como as configurações do grafana estão salvas em um volume, elas não serão perdidas!
 ![Grafana](https://raw.githubusercontent.com/kauegatto/ticketing-spring-microservices/main/docs/grafana-functional.jpg)
 
-## Testes de integração de verdade:
-Esse projeto conta com (poucos, por preguiça) testes de integração, mas testes de verdade, onde chamo um service, que posteriormente acessa um repositório (que acessa um banco de dados real) e um basePublisher, que usa um rabbitMQ real.
+# Service Discovery
+
+Aqui usamos o Netflix Eureka Server em um microserviço como servidor de service discovery, permitindo que as chamadas cheguem aos nossos serviços independente da quantidade de instâncias, ip's, et cetera.
+
+# Testes de repositórios de verdade:
+Esse projeto conta com (poucos, por certa preguiça) testes de integração, mas testes de verdade, onde chamo um service, que posteriormente acessa um repositório (que acessa um banco de dados real) e um basePublisher, que usa um rabbitMQ real.
 Essa configuração  é feita usando `testContainers`, framework open source. 
 
 Toda vez que um teste começa, a última imagem de rabbitmq e docker são baixadas e sobem em portas aleatórias disponíveis.
